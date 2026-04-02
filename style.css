@@ -485,3 +485,24 @@
          z-index: 1202;
       }
       #lb-counter.hidden { display: none; }
+
+
+.cart-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  padding: 0.7rem 1.2rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+  z-index: 2000;
+}
+
+.cart-popup.show {
+  opacity: 1;
+  transform: translateY(0);
+}

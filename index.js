@@ -65,6 +65,24 @@
       document.body.style.overflow = '';
     }
 
+    function showCartPopup(msg) {
+      let popup = document.getElementById('cart-popup');
+
+      if (!popup) {
+        popup = document.createElement('div');
+        popup.id = 'cart-popup';
+        popup.className = 'cart-popup';
+        document.body.appendChild(popup);
+      }
+
+      popup.textContent = msg;
+      popup.classList.add('show');
+
+      setTimeout(() => {
+        popup.classList.remove('show');
+      }, 1800);
+    }
+
     function handleLbOverlayClick(e) {
       if (e.target === document.getElementById('lightbox')) closeLightbox();
     }
@@ -142,9 +160,11 @@
     const cart = [];
 
     function addToCart(name, price) {
-      cart.push({ name, price });
-      updateCart();
-    }
+    cart.push({ name, price });
+    updateCart();
+
+    showCartPopup(`Dodano do koszyka: ${name}`);
+  }
 
     function updateCart() {
       const list     = document.getElementById('cart-items');
