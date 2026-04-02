@@ -199,6 +199,11 @@
     }
 
     function submitOrder() {
+        const captcha = grecaptcha.getResponse();
+        if (!captcha) {
+          showToast('error', 'Potwierdź, że nie jesteś robotem.');
+          return;
+        }
       const name    = document.getElementById('order-name').value.trim();
       const email   = document.getElementById('order-email').value.trim();
       const btn     = document.getElementById('modal-submit-btn');
