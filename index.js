@@ -1,6 +1,6 @@
 // ─── EMAILJS CREDENTIALS ──────────────────────────────
     const PUBLIC_KEY  = "lUwINsHZXKP3xq0Ml";
-    const SERVICE_ID  = "service_bjxagev";
+    const SERVICE_ID  = "service_35p6c3j";
     const TEMPLATE_ID = "template_kwl12qn";
     // ─────────────────────────────────────────────────────
 
