@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Sneekerz - Streetwear</title>
+   <link rel="icon" href="assets/Sneekerz logo.png"/>
+   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+   <link rel="stylesheet" href="style.css">   
+</head>
+
+<body>
+
+  <header>
+    <h1>SNEEKERZ©</h1>
+    <nav>
+      <a href="#shop">Sklep</a>
+      <a href="#about">O nas</a>
+      <a href="#cart">Koszyk (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- SHOP -->
+    <section id="shop" class="page active">
+      <section class="hero">
+        <h2>Streetwear. Minimalistyczne. Odważne.</h2>
+        <p>Sneekerz© łączy nowoczesne sylwetki z surową kulturą uliczną. Stworzone do noszenia na co dzień.</p>
+        <button onclick="location.hash='#shop'">KUP TERAZ</button>
+      </section>
+
+      <section class="products">
+        <div class="products-bg-text">SNEEKERZ</div>
+        <h3>Ṕ̵͓ȓ̵͈ó̵̡d̶̃ͅu̸͙͌k̶̝̋t̵͇͐y̶͕̍</h3>
+        <div class="product-grid">
+
+          <!-- Product 1 – single image -->
+          <div class="product">
+            <div class="product-img-wrapper">
+              <div class="img" onclick="openLightbox(this)">
+                <img src="assets/drops/Sneekerz Original.png" alt="Sneekerz Original">
+              </div>
+              <!-- No thumb strip needed for single image -->
+            </div>
+            <h4>Sneekerz Original©</h4>
+            <span>35 BŻ</span>
+            <button onclick="addToCart('Sneekerz Original', 35)">Dodaj do koszyka</button>
+          </div>
+
+          <!-- Product 2 – single image -->
+          <div class="product">
+            <div class="product-img-wrapper">
+              <div class="img" onclick="openLightbox(this)">
+                <img src="assets/drops/Sneekerz X Marchewa.png" alt="Sneekerz X Marchewa">
+              </div>
+            </div>
+            <h4>Sneekerz© X Marchewa</h4>
+            <span>50 BŻ</span>
+            <button onclick="addToCart('Sneekerz X Marchewa', 50)">Dodaj do koszyka</button>
+          </div>
+
+          <!-- Product 3 – single image -->
+          <div class="product">
+            <div class="product-img-wrapper">
+              <div class="img" onclick="openLightbox(this)">
+                <img src="assets/drops/Sneekerz VOID.png" alt="Sneekerz VØID">
+              </div>
+            </div>
+            <h4>Sneekerz VØID©</h4>
+            <span>15 BŻ</span>
+            <button onclick="addToCart('Sneekerz VØID', 15)">Dodaj do koszyka</button>
+          </div>
+
+          <!-- Product 4 – MULTI-IMAGE EXAMPLE (Enderman has 3 angles) -->
+          <!--
+            To add more images to any product, add data-images on the .img div.
+            Format: data-images="path1.png|path2.png|path3.png"
+            The first image is always the main src of the <img> tag.
+            Thumbnails appear automatically if more than 1 image is listed.
+          -->
+          <div class="product">
+            <div class="product-img-wrapper">
+              <div class="img"
+                   onclick="openLightbox(this)"
+                   data-images="assets/drops/Sneekerz Enderman.png|assets/drops/Sneekerz Enderman.png|assets/drops/Sneekerz Enderman.png">
+                   <!--
+                     Replace the repeated paths above with your real extra images, e.g.:
+                     data-images="assets/drops/Sneekerz Enderman.png|assets/drops/Sneekerz Enderman Back.png|assets/drops/Sneekerz Enderman Detail.png"
+                   -->
+                <img src="assets/drops/Sneekerz Enderman.png" alt="Sneekerz Enderman">
+              </div>
+              <!-- thumbs injected by JS -->
+              <div class="thumb-strip" id="thumbs-enderman"></div>
+            </div>
+            <h4>Sneekerz Enderman©</h4>
+            <h4>LIMITOWANA EDYCJA</h4>
+            <span>200 BŻ</span>
+            <button onclick="addToCart('Sneekerz Enderman', 200)">Dodaj do koszyka</button>
+          </div>
+
+        </div>
+      </section>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="page">
+      <section class="products">
+        <h3>Co to Sneekerz©?</h3>
+        <p style="max-width:600px;margin:auto;text-align:center;">
+          Sneekerz© to nowoczesna marka streetwearowa zbudowana na minimalizmie,
+          trwałości i miejskiej kulturze. Zaprojektowana do noszenia na co dzień,
+          inspirowana ulicą. Stworzone z ❤️ przez Annę i Nikodema
+        </p>
+      </section>
+    </section>
+
+    <!-- CART -->
+    <section id="cart" class="page">
+      <section class="products">
+        <h3>Twój koszyk</h3>
+        <ul id="cart-items"></ul>
+        <div class="cart-summary">
+          <p><strong>Suma: <span id="cart-total">0</span> BŻ</strong></p>
+          <button id="checkout-btn" onclick="openCheckout()" disabled>ZŁÓŻ ZAMÓWIENIE</button>
+        </div>
+      </section>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Sneekerz. Wszelkie prawa zastrzeżone. Strona zbudowana przez Quad.</p>
+    <p>Informacje kontaktowe: Założyciele: annaja14@icloud.com, Twórca stron: quad.business@proton.me</p>
+  </footer>
+
+  <!-- ── CHECKOUT MODAL ── -->
+  <div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeCheckout()">&#x2715;</button>
+      <h2>ZAMÓWIENIE</h2>
+      <p class="modal-subtitle">Wypełnij dane, aby złożyć zamówienie</p>
+      <div class="modal-order-summary" id="modal-summary"></div>
+      <div class="field">
+        <label for="order-name">Imię i nazwisko</label>
+        <input type="text" id="order-name" placeholder="np. Anna Kowalska" autocomplete="name"/>
+      </div>
+      <div class="field">
+        <label for="order-email">Adres e-mail</label>
+        <input type="email" id="order-email" placeholder="np. anna@example.com" autocomplete="email"/>
+      </div>
+      <button class="modal-submit" id="modal-submit-btn" onclick="submitOrder()">
+        <span id="modal-btn-text">WYŚLIJ ZAMÓWIENIE</span>
+        <div class="spinner" id="modal-spinner"></div>
+      </button>
+      <div class="modal-toast" id="modal-toast">
+        <span id="modal-toast-msg"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── LIGHTBOX ── -->
+  <div id="lightbox" onclick="handleLbOverlayClick(event)">
+    <button id="lb-close" onclick="closeLightbox()">&#x2715;</button>
+    <span id="lb-counter"></span>
+    <button class="lb-arrow" id="lb-prev" onclick="lbShift(-1)">&#8592;</button>
+    <button class="lb-arrow" id="lb-next" onclick="lbShift(+1)">&#8594;</button>
+
+    <div class="lb-inner">
+      <img id="lb-img" src="" alt="">
+      <div id="lb-caption"></div>
+      <div id="lb-thumbs"></div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+
+</body>
+</html>
